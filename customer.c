@@ -16,11 +16,15 @@ int add_customer(customer** ptr2head, int id, char* name) {
     // create new customer on the heap
     customer* new_customer = malloc(sizeof(customer));
     if (new_customer == NULL) {
-        printf("Error in add_customer(): malloc() failed\n");
+        printf("Error in customer.c: add_customer() failed\n");
         return(1);
     }
     new_customer->id = id;
     new_customer->name = malloc(strlen(name)+1);
+    if (new_customer->name == NULL) {
+        printf("Error in customer.c: add_customer() failed\n");
+        return(1);
+    }
     strcpy(new_customer->name, name);
     new_customer->next = NULL;
 
