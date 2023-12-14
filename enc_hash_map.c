@@ -8,7 +8,7 @@ int main() {
     // initialize vars
     customer_hash_table* my_table;
     char name [10]; char more_data [2];
-    int id, bucket, buckets, failure;
+    int id, buckets, failure;
 
     // dynamically allocate hash table
     printf("How many buckets should we have?\n");
@@ -23,13 +23,11 @@ int main() {
         printf("Enter a customer name and id\n");
         scanf("%9s %d", name, &id);
 
-        // call hashing fn to determine bucket
-        bucket = hash_by_name(my_table, name);
-
-        // add user to linked list at bucket
-        failure = add_customer(&(my_table->buckets[bucket]), id, name);
-        if (failure) {
+        // add user to linked list at bucket by hashing
+        failure = add_customer_to_table(my_table, id, name);
+        if (failure != 0) {
             printf("main() failed to add customer\n");
+            return(-1);
         }
 
         // ask if more data
