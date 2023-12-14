@@ -15,4 +15,4 @@ To run this project:
     
     b) Run ./dynamic_hash_map to use the dynamically allocated hash map (more flexible)
 
-    b) Run ./encapsulated_hash_map to use the library hash map (more robust)
+    b) Run ./enc_hash_map to use the library hash map (more robust)
