@@ -13,4 +13,6 @@ To run this project:
 
     a) Run ./static_hash_map to use the statically allocated hash map (less flexible)
     
-    b) Run ./dynamic_hash_map to use the a dynamically allocated hash map (more flexible)
+    b) Run ./dynamic_hash_map to use the dynamically allocated hash map (more flexible)
+
+    b) Run ./encapsulated_hash_map to use the library hash map (more robust)
