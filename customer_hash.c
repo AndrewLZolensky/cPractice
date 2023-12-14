@@ -18,3 +18,19 @@ customer_hash_table* create_hash_table(int num_of_buckets) {
     my_table->num_of_buckets = num_of_buckets;
     return my_table;
 }
+
+int hash_by_ID (customer_hash_table* my_table, int id) {
+
+    // handle null hash table
+    if (my_table == NULL) {
+        printf("Error in customer_hash.c: hash_by_ID() failed\n");
+        return(-1);
+    }
+
+    // hash
+    int buckets = my_table->num_of_buckets;
+    int bucket = id % buckets;
+
+
+    return(bucket);
+}
