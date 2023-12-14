@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "customer.h"
-#include "customer_hash.h"
 
 // Dynamic allocation of hash map
 int main() {
@@ -50,6 +49,8 @@ int main() {
     for (int i = 0; i < buckets; i++) {
         delete_list(&my_table[i]);
     }
+
+    free(my_table);
 
     return(0);
 }
