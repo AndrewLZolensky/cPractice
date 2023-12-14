@@ -11,6 +11,6 @@ typedef struct {
     customer** buckets;
 } customer_hash_table;
 
-customer* create_hash_table(int num_of_buckets);
+customer_hash_table* create_hash_table(int num_of_buckets);
 
 #endif
