@@ -3,6 +3,48 @@
 #include <string.h>
 #include "customer_hash.h"
 
+int hash_by_ID (void* table, void* key) {
+
+    // cast table
+    customer_hash_table *my_table = table;
+    int *id = key;
+
+    // handle null hash table
+    if (my_table == NULL) {
+        printf("Error in customer_hash.c: hash_by_ID() failed\n");
+        return(-1);
+    }
+
+    // otherwise hash
+    int buckets = my_table->num_of_buckets;
+    int bucket = (*id) % buckets;
+
+
+    return(bucket);
+}
+
+int hash_by_name (void* table, void* key) {
+
+    // cast table
+    customer_hash_table *my_table = table;
+    char *name = key;
+
+    // handle NULL case
+    if (my_table == NULL || name == NULL) {
+        printf("Error in customer_hash.c: hash_by_name() failed\n");
+        return(-1);
+    }
+
+    // otherwise hash by first letter of name
+    int buckets = my_table->num_of_buckets;
+    char first_letter = name[0];
+    int bucket = first_letter - 0x41;
+    bucket = bucket % buckets;
+
+    
+    return(bucket);
+}
+
 int main() {
 
     // initialize vars
@@ -13,7 +55,9 @@ int main() {
     // dynamically allocate hash table
     printf("How many buckets should we have?\n");
     scanf("%d", &buckets);
-    my_table = create_hash_table(buckets);
+
+    // create hash table, use fn pointer for hash fn
+    my_table = create_hash_table(buckets, hash_by_name);
     printf("Table created with %d buckets\n", my_table->num_of_buckets);
 
     // fill hash map from user input and hashing fn
