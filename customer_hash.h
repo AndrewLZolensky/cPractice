@@ -13,5 +13,6 @@ typedef struct {
 
 customer_hash_table* create_hash_table(int num_of_buckets);
 int hash_by_ID (customer_hash_table* my_table, int id);
+int hash_by_name (customer_hash_table* my_table, char* name);
 
 #endif

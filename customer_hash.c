@@ -27,10 +27,28 @@ int hash_by_ID (customer_hash_table* my_table, int id) {
         return(-1);
     }
 
-    // hash
+    // otherwise hash
     int buckets = my_table->num_of_buckets;
     int bucket = id % buckets;
 
 
+    return(bucket);
+}
+
+int hash_by_name (customer_hash_table* my_table, char* name) {
+
+    // handle NULL case
+    if (my_table == NULL || name == NULL) {
+        printf("Error in customer_hash.c: hash_by_name() failed\n");
+        return(-1);
+    }
+
+    // otherwise hash by first letter of name
+    int buckets = my_table->num_of_buckets;
+    char first_letter = name[0];
+    int bucket = first_letter - 0x41;
+    bucket = bucket % buckets;
+
+    
     return(bucket);
 }

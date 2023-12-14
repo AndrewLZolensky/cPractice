@@ -24,7 +24,7 @@ int main() {
         scanf("%9s %d", name, &id);
 
         // call hashing fn to determine bucket
-        bucket = hash_by_ID(my_table, id);
+        bucket = hash_by_name(my_table, name);
 
         // add user to linked list at bucket
         failure = add_customer(&(my_table->buckets[bucket]), id, name);
